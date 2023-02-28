@@ -46,7 +46,9 @@ public class UserListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public int getItemViewType(int position) {
-        return list.get(position).getItemViewType();
+        //return list.get(position).getItemViewType();
+
+        return position;
     }
 
     @Override
