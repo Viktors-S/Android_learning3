@@ -6,7 +6,7 @@ public class Phone {
     @NonNull
     String mobile, home, office;
 
-    Phone(@NonNull String mobile, @NonNull String home, @NonNull String office){
+    public Phone(@NonNull String mobile, @NonNull String home, @NonNull String office){
 
         this.mobile = mobile;
         this.home = home;

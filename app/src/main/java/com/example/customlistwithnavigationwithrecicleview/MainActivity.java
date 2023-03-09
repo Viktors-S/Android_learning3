@@ -31,10 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         navigationView = findViewById(R.id.navigation_view);
         headerText = findViewById(R.id.tv_header_name);
-        if(savedInstanceState == null) {
-            headerText.setText("HOME");
-            startHomeFragment();
-        }
+
         navigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -75,15 +72,23 @@ public class MainActivity extends AppCompatActivity {
 
 
                 }
+
                 return false;
             }
         });
+
+        if(savedInstanceState == null) {
+            headerText.setText("HOME");
+            startHomeFragment();
+            navigationView.getMenu().getItem(0).setChecked(true);
+        }
+
 
     }
 
     private void  startFragment(Fragment fragment){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
+        transaction.setCustomAnimations(R.anim.enter,R.anim.exit,R.anim.pop_enter,R.anim.pop_exit);
         transaction.replace(R.id.fl_fragment_container,fragment);
         transaction.commit();
     }

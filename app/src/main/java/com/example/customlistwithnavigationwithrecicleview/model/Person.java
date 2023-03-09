@@ -1,5 +1,6 @@
 package com.example.customlistwithnavigationwithrecicleview.model;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -64,55 +65,60 @@ public class Person  {
         return phoneList;
     }
 
+    @NonNull
+    public int getItemViewType(){
+        return Integer.valueOf(id)%2;
+    }
+
     public static class Builder{
         String id,name,address,gender;
         ArrayList<String> songPlaylist;
         ArrayList<String> artistPlaylist;
         Phone phoneList;
 
-        Person.Builder withId(String id){
+        public Person.Builder withId(String id){
             this.id = id;
 
             return this;
         }
 
-        Person.Builder withName(String name){
+        public Person.Builder withName(String name){
             this.name = name;
 
             return  this;
         }
 
-        Person.Builder withAddress(String address){
+        public Person.Builder withAddress(String address){
             this.address = address;
 
             return  this;
         }
 
-        Person.Builder withNGender(String gender){
+        public Person.Builder withGender(String gender){
             this.gender = gender;
 
             return  this;
         }
 
-        Person.Builder withSongPlaylist(ArrayList<String> songPlaylist){
+        public Person.Builder withSongPlaylist(ArrayList<String> songPlaylist){
             this.songPlaylist = songPlaylist;
 
             return  this;
         }
 
-        Person.Builder withArtistPlaylist(ArrayList<String> artistPlaylist){
+        public Person.Builder withArtistPlaylist(ArrayList<String> artistPlaylist){
             this.artistPlaylist = artistPlaylist;
 
             return  this;
         }
 
-        Person.Builder withPhoneList(Phone phoneList){
+        public Person.Builder withPhoneList(Phone phoneList){
             this.phoneList = phoneList;
 
             return  this;
         }
 
-        Person build(){
+        public Person build(){
             Person person = new Person();
             person.id = id;
             person.name = name;

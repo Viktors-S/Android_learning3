@@ -1,5 +1,7 @@
 package com.example.customlistwithnavigationwithrecicleview;
 
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -31,6 +33,7 @@ public class ServiceHandler {
             }
 
             response=stringBuffer.toString();
+            Log.i("JSON",response);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -43,7 +46,6 @@ public class ServiceHandler {
                 }
             }
         }
-
         return response;
     }
 
