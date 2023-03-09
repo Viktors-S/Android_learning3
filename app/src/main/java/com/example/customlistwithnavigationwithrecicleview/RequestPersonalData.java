@@ -6,6 +6,7 @@ import android.util.Log;
 
 import androidx.loader.content.AsyncTaskLoader;
 
+import com.example.customlistwithnavigationwithrecicleview.Fragments.AdvancedJsonFragment;
 import com.example.customlistwithnavigationwithrecicleview.model.Person;
 import com.example.customlistwithnavigationwithrecicleview.model.Phone;
 
@@ -41,7 +42,6 @@ public class RequestPersonalData extends AsyncTask<Void,Void,Void> {
 
         if(jsonString!= null){
             jsonString = jsonString.replace("<pre>", "").replace("</pre>","");
-            Log.i("REQJSON",jsonString);
             arrayList = new ArrayList<>();
 
             JSONObject jsonObject = null;
@@ -82,6 +82,7 @@ public class RequestPersonalData extends AsyncTask<Void,Void,Void> {
 
         }
 
+
         return null;
     }
 
@@ -95,7 +96,6 @@ public class RequestPersonalData extends AsyncTask<Void,Void,Void> {
         listener.onDataReceived(arrayList);
 
     }
-
 
     public interface OnPersonListDataReceived{
         void onDataReceived(ArrayList<Person> list);

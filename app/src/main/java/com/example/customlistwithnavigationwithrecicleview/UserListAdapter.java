@@ -16,22 +16,28 @@ import java.util.ArrayList;
 
 public class UserListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
+    private final RecyclerViewInterface recyclerViewInterface;
 
     ArrayList<Person> list;
 
-    public UserListAdapter(ArrayList<Person> list){
+    public ArrayList<Person> getList() {
+        return list;
+    }
+
+    public UserListAdapter(ArrayList<Person> list, RecyclerViewInterface recyclerViewInterface){
         this.list = list;
+        this.recyclerViewInterface = recyclerViewInterface;
     }
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if(viewType == 0){
-            return new ItemPersonOneViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_person_one, parent, false));
+            return new ItemPersonOneViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_person_one, parent, false),recyclerViewInterface);
         } else if (viewType==1) {
-            return new ItemPersonTwoViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_person_two, parent, false));
+            return new ItemPersonTwoViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_person_two, parent, false),recyclerViewInterface);
         }else{
-            return new ItemPersonOneViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_person_one, parent, false));
+            return new ItemPersonOneViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_person_one, parent, false),recyclerViewInterface);
         }
     }
 
@@ -70,13 +76,26 @@ public class UserListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         TextView name,phone,song;
         ImageView icon;
 
-        public ItemPersonOneViewHolder(@NonNull View itemView) {
+        public ItemPersonOneViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
 
             name = itemView.findViewById(R.id.tv_name);
             phone = itemView.findViewById(R.id.tv_phone);
             song = itemView.findViewById(R.id.tv_best_song);
             icon = itemView.findViewById(R.id.iv_icon);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(recyclerViewInterface!=null){
+                        int pos = getAdapterPosition();
+
+                        if(pos!=RecyclerView.NO_POSITION){
+                            recyclerViewInterface.onItemClick(pos);
+                        }
+                    }
+                }
+            });
 
         }
 
@@ -90,7 +109,7 @@ public class UserListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         TextView name,phone,song;
         ImageView icon;
 
-        public ItemPersonTwoViewHolder(@NonNull View itemView) {
+        public ItemPersonTwoViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
 
             name = itemView.findViewById(R.id.tv_names);
@@ -98,6 +117,16 @@ public class UserListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             song = itemView.findViewById(R.id.tv_best_songs);
             icon = itemView.findViewById(R.id.iv_icons);
 
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int pos = getAdapterPosition();
+                    if(pos!=RecyclerView.NO_POSITION){
+                        recyclerViewInterface.onItemClick(pos);
+                    }
+                }
+            });
         }
 
     }

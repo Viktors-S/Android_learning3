@@ -33,7 +33,6 @@ public class ServiceHandler {
             }
 
             response=stringBuffer.toString();
-            Log.i("JSON",response);
 
         } catch (IOException e) {
             e.printStackTrace();
