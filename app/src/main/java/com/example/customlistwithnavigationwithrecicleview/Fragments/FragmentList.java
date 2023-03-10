@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,7 +23,7 @@ import com.example.customlistwithnavigationwithrecicleview.model.Person;
 
 import java.util.ArrayList;
 
-public class ListFragment extends Fragment implements RecyclerViewInterface {
+public class FragmentList extends Fragment implements RecyclerViewInterface {
 
     View view;
 
@@ -30,6 +31,12 @@ public class ListFragment extends Fragment implements RecyclerViewInterface {
     UserListAdapter userListAdapter;
     RecyclerView recyclerView;
     ArrayList<Person> personArrayList;
+
+    AdvancedJsonFragment parent;
+
+    public FragmentList(AdvancedJsonFragment parent){
+        this.parent = parent;
+    }
 
     @Nullable
     @Override
@@ -60,7 +67,7 @@ public class ListFragment extends Fragment implements RecyclerViewInterface {
     }
     private void setAdapter(View view, ArrayList<Person> list){
         recyclerView = (RecyclerView) view.findViewById(R.id.rv_list);
-        userListAdapter = new UserListAdapter(list,this);
+        userListAdapter = new UserListAdapter(list,parent);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
         SpacingItemDecorator itemDecorator = new SpacingItemDecorator(20);
         recyclerView.addItemDecoration(itemDecorator);
@@ -68,13 +75,18 @@ public class ListFragment extends Fragment implements RecyclerViewInterface {
         recyclerView.setAdapter(userListAdapter);
 
         personArrayList = userListAdapter.getList();
+        parent.arrayList=personArrayList;
     }
 
     @Override
     public void onItemClick(int position) {
 
-        Toast.makeText(getContext(), personArrayList.get(position).getName(), Toast.LENGTH_SHORT).show();
 
+
+    }
+
+    public ArrayList<Person> getPersonArrayList(){
+        return this.personArrayList;
     }
 
 }

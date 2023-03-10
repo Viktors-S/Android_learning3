@@ -54,6 +54,8 @@ public class RequestPersonalData extends AsyncTask<Void,Void,Void> {
                     JSONObject c = jsonArray.getJSONObject(i);
                     String name = c.getString("name");
                     String id = c.getString("id");
+                    String address = c.getString("address");
+                    String gender = c.getString("gender");
                     Phone phone = new Phone(c.getJSONObject("phone").getString("mobile"),
                             c.getJSONObject("phone").getString("home"),
                             c.getJSONObject("phone").getString("office"));
@@ -67,6 +69,8 @@ public class RequestPersonalData extends AsyncTask<Void,Void,Void> {
                     Person person = new Person.Builder()
                             .withName(name)
                             .withPhoneList(phone)
+                            .withGender(gender)
+                            .withAddress(address)
                             .withSongPlaylist(song)
                             .withId(id)
                             .build();

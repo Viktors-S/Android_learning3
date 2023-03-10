@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.fragment.app.ListFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,30 +25,43 @@ import com.example.customlistwithnavigationwithrecicleview.model.Person;
 
 import java.util.ArrayList;
 
-public class AdvancedJsonFragment extends Fragment {
+public class AdvancedJsonFragment extends Fragment implements RecyclerViewInterface{
 
     View view;
+
+    int pos;
+    ArrayList<Person> arrayList;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_advanced,container,false);
 
-        startListFragment();
+        startFragmentList();
 
         return view;
     }
 
     private void  startFragment(Fragment fragment){
         FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(R.anim.pop_up,R.anim.pop_down);
+        transaction.setCustomAnimations(R.anim.pop_up,R.anim.pop_exit_up);
         transaction.replace(R.id.fl_advanced_frame,fragment);
         transaction.commit();
     }
 
-    private void startListFragment(){
-        startFragment(new ListFragment());
+    private void startFragmentList(){
+        FragmentList fl = new FragmentList(this);
+        startFragment(fl);
     }
 
+    private void startFragmentProfile(){
+        startFragment(new FragmentProfile(this));
+    }
 
+    @Override
+    public void onItemClick(int position) {
+        this.pos = position;
+        Toast.makeText(getContext(), arrayList.get(position).getName(), Toast.LENGTH_SHORT).show();
+        startFragmentProfile();
+    }
 }
