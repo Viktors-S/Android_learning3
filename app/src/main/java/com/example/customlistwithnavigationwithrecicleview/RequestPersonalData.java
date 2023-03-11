@@ -65,6 +65,11 @@ public class RequestPersonalData extends AsyncTask<Void,Void,Void> {
                     for(int j = 0;j<songJson.length();j++){
                         song.add(songJson.getString(j));
                     }
+                    ArrayList<String> artist = new ArrayList<>();
+                    JSONArray artistJson = c.getJSONObject("song_play_list").getJSONArray("artists");
+                    for(int j = 0;j<artistJson.length();j++){
+                        artist.add(artistJson.getString(j));
+                    }
 
                     Person person = new Person.Builder()
                             .withName(name)
@@ -72,6 +77,7 @@ public class RequestPersonalData extends AsyncTask<Void,Void,Void> {
                             .withGender(gender)
                             .withAddress(address)
                             .withSongPlaylist(song)
+                            .withArtistPlaylist(artist)
                             .withId(id)
                             .build();
 

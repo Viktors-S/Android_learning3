@@ -69,7 +69,7 @@ public class FragmentList extends Fragment implements RecyclerViewInterface {
         recyclerView = (RecyclerView) view.findViewById(R.id.rv_list);
         userListAdapter = new UserListAdapter(list,parent);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
-        SpacingItemDecorator itemDecorator = new SpacingItemDecorator(20);
+        SpacingItemDecorator itemDecorator = new SpacingItemDecorator(20,0);
         recyclerView.addItemDecoration(itemDecorator);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(userListAdapter);

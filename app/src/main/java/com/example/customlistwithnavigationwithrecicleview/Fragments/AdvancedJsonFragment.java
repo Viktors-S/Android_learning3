@@ -61,7 +61,6 @@ public class AdvancedJsonFragment extends Fragment implements RecyclerViewInterf
     @Override
     public void onItemClick(int position) {
         this.pos = position;
-        Toast.makeText(getContext(), arrayList.get(position).getName(), Toast.LENGTH_SHORT).show();
         startFragmentProfile();
     }
 }
