@@ -81,8 +81,6 @@ public class FragmentList extends Fragment implements RecyclerViewInterface {
     @Override
     public void onItemClick(int position) {
 
-
-
     }
 
     public ArrayList<Person> getPersonArrayList(){

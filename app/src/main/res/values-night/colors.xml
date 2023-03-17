@@ -6,12 +6,12 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FF000000</color>
 
-    <color name="greyed_out">#a6a6a6</color>
+    <color name="greyed_out">#1B1B1B</color>
     <color name="activated">#293173</color>
 
-    <color name="greyish">#D6D6D6</color>
+    <color name="greyish">#2C2C2C</color>
 
     <color name="cadet_grey">#9AA0A8</color>//https://coolors.co/9aa0a8-a7c4b5-a9d8b8-beffc7-72705b
     <color name="ash_grey">#A7C4B5</color>//https://coolors.co/9aa0a8-a7c4b5-a9d8b8-beffc7-72705b

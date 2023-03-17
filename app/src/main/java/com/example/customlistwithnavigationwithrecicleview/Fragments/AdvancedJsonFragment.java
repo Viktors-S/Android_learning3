@@ -62,5 +62,6 @@ public class AdvancedJsonFragment extends Fragment implements RecyclerViewInterf
     public void onItemClick(int position) {
         this.pos = position;
         startFragmentProfile();
+
     }
 }

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.customlistwithnavigationwithrecicleview.Fragments.AdvancedJsonFragment;
 import com.example.customlistwithnavigationwithrecicleview.Fragments.HomeFragment;
+import com.example.customlistwithnavigationwithrecicleview.Fragments.SimpleJsonFragment;
 import com.example.customlistwithnavigationwithrecicleview.Fragments.WallpaperFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startJsonHomeworkFragment() {
-
+        startFragment(new SimpleJsonFragment());
     }
 
     private void startWallpaperFragment() {
