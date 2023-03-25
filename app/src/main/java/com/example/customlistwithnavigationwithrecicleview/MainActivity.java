@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.customlistwithnavigationwithrecicleview.Fragments.AdvancedJsonFragment;
 import com.example.customlistwithnavigationwithrecicleview.Fragments.HomeFragment;
+import com.example.customlistwithnavigationwithrecicleview.Fragments.LuckyChoiceFragment;
 import com.example.customlistwithnavigationwithrecicleview.Fragments.SimpleJsonFragment;
 import com.example.customlistwithnavigationwithrecicleview.Fragments.WallpaperFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.nav_lucky_choice:{
                         startLuckyChoiceFragment();
-                        headerText.setText("EXAM");
+                        headerText.setText("LUCKY CHOICE");
                         return true;
                     }
 
@@ -112,8 +113,6 @@ public class MainActivity extends AppCompatActivity {
         startFragment(new WallpaperFragment());
     }
 
-    private void startLuckyChoiceFragment() {
-
-    }
+    private void startLuckyChoiceFragment() {startFragment(new LuckyChoiceFragment());}
 
 }
